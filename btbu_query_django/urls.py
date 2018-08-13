@@ -26,9 +26,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # 绑定相关
-    path('binding', binding_views.index),
-    path('binding/do', binding_views.doBinding),
-    path('binding/withdraw', binding_views.withdrawBinding),
+    path('binding', binding_views.index),                           # 绑定查询
+    path('binding/do', binding_views.doBinding),                    # 绑定操作
+    path('binding/withdraw', binding_views.withdrawBinding),        # 取消绑定
 
     # 成绩查询相关
     path('grade/', grade_view.grade),

@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from BTBU_query.数据库.const import *
-from binding.models import MongoConn
-from BTBU_query.内网查询.bs_spider import auto_login, auto_query_classTable
+from BTBU_query.数据库.mongoConn import MongoConn
+from BTBU_query.内网查询.jwgl_spider import auto_login, auto_query_classTable
 from classTable_query.models import Date
 import json
 
@@ -31,7 +31,7 @@ def available_data(request: HttpRequest)-> HttpResponse:
         # 第一次访问
         else:
             spiderTest = auto_login(studentID, password, openID)
-            spiderTest.connTest()
+            spiderTest.getCookie()
             spiderTest.logon()
             classTableQueryTest = auto_query_classTable(spiderTest.cookies)
             DateList = classTableQueryTest.getDateList()
@@ -75,7 +75,7 @@ def get(request: HttpRequest)-> HttpResponse:
         # 第一次访问该学期
         if quertDate[semester] == False:
             spiderTest = auto_login(studentID, password, openID)
-            spiderTest.connTest()
+            spiderTest.getCookie()
             spiderTest.logon()
             classTableQueryTest = auto_query_classTable(spiderTest.cookies)
             classTableQueryTest.getDateList()

@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from binding.models import MongoConn
+from BTBU_query.数据库.mongoConn import MongoConn
 from django.http import HttpResponse, HttpRequest
-from BTBU_query.内网查询.bs_spider import auto_login
+from BTBU_query.内网查询.jwgl_spider import auto_login
 from BTBU_query.数据库.const import *
 
 import json
@@ -34,7 +34,7 @@ def doBinding(request: HttpRequest)-> HttpResponse:
 
 
         spiderTest = auto_login(studentID, password, openid)
-        spiderTest.connTest()
+        spiderTest.getCookie()
         spiderTest.logon()
 
         resp = {'isBinding': False, 'status': 'overtime'}

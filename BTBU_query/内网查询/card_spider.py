@@ -1,5 +1,5 @@
-from typing import List, Any
 
+# 用 card.btbu.edu.cn接口实现 一卡通查询功能
 import requests
 import datetime
 import bs4
@@ -16,9 +16,9 @@ class spider:
         self.personMsgItems = ['姓名', '性别', '部门', '职务', '身份', '证件号码', '一卡通号', '卡状态']
         self.isLogin = False
 
-        # 第一步获取cookies
+        # 第一步 获取cookies
         self.cookies = self.getCookie().get_dict()
-        # 第二步
+        # 第二步 自动登录
         self.autoLogin()
 
 
@@ -41,9 +41,9 @@ class spider:
             self.isLogin = True
 
 
-    def recentDaysMsg(self, days:int = 90, limit:int = 10, _offset:int = 1):     # 查询最近90天情况
+    def recentDaysMsg(self, days:int = 90, limit:int = 20, _offset:int = 1):     # 查询最近90天情况，最多20条有效数据，offset代表第几页
         if self.isLogin is False:
-            print('卡号密码不对!')
+            # print('卡号密码不对!')
             return
         url = self.url + 'CardWeb/finance.asp'
 
@@ -84,10 +84,15 @@ class spider:
             self.recentDaysMsg(days = days, limit = limit, _offset = int(currentPage) + 1)
 
     def getPersonMsg(self, personMsgItems = []):
+        '''
+        获取个人信息,以便存入数据库
+        :param personMsgItems: 个人信息的名目的list
+        :return: dict
+        '''
         if personMsgItems != []:
             self.personMsgItems = personMsgItems
         if self.isLogin is False:
-            print('卡号密码不对!')
+            # print('卡号密码不对!')
             return
         url = self.url + 'CardWeb/ShowPersonnel.asp'
         response = requests.get(url = url, cookies = self.cookies)

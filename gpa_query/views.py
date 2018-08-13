@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from BTBU_query.数据库.const import *
-from binding.models import MongoConn
-from BTBU_query.内网查询.bs_spider import auto_login, auto_query_grade
+from BTBU_query.数据库.mongoConn import MongoConn
+from BTBU_query.内网查询.jwgl_spider import auto_login, auto_query_grade
 import json
 
 mongoFilter = {
@@ -39,7 +39,7 @@ def gpa(request: HttpRequest)-> HttpResponse:
             password = MongoConn().db.get_collection(mongoCollections[0]).find_one({'openID': openid},
                                                                                  {'_id': False, 'password': True})['password']
             spiderTest = auto_login(studentID, password, openid)
-            spiderTest.connTest()
+            spiderTest.getCookie()
             spiderTest.logon()
             queryTest = auto_query_grade(spiderTest.cookies)
             queryTest.getDateList()

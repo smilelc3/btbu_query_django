@@ -1,4 +1,6 @@
 """
+二维码orc识别模块
+
 需提前安装tesseract-ocr包
 sudo apt install tesseract-ocr
 

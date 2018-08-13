@@ -15,7 +15,7 @@ db.createCollection(name = "Card_Message")
 /*
 远程连接配置
 
-1. nano /etc/mongodb.conf
+1. sudo nano /etc/mongodb.conf
 
  bind_ip = 0.0.0.0
  port = 27017

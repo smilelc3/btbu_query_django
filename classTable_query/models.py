@@ -2,6 +2,9 @@ from django.db import models
 import datetime
 # Create your models here.
 class Date:
+    '''
+    自动判断应显示学期的类
+    '''
     thisYear = datetime.datetime.now().year
     springStartDate = datetime.date(thisYear, 3, 1)       # 3月1日春季开学
     springEndDate = datetime.date(thisYear, 7, 16)  # 7月16日春季结束
