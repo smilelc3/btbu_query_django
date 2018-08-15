@@ -11,7 +11,7 @@ class MongoConn(object):
         # connect db
         try:
             self.conn = pymongo.MongoClient(MONGODB_CONFIG['host'], MONGODB_CONFIG['port'])
-            print(MONGODB_CONFIG['host'])
+            # print(MONGODB_CONFIG['host'])
             self.db = self.conn[MONGODB_CONFIG['db_name']]  # connect db
             self.username=MONGODB_CONFIG['username']
             self.password=MONGODB_CONFIG['password']

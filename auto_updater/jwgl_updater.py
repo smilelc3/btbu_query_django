@@ -2,6 +2,7 @@ import time
 from BTBU_query.数据库.const import *
 from BTBU_query.数据库.mongoConn import MongoConn
 
+# TODO(liuchang)： 完善自动扫描
 
 class Updater:
     """

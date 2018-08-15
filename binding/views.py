@@ -13,7 +13,7 @@ def index(request: HttpRequest)-> HttpResponse:
 
 
     openid = request.GET['openid']
-    print(openid)
+    # print(openid)
     isBinding = MongoConn().db.get_collection(mongoCollections[0]).find_one({'openID': openid})
     if isBinding != None:
         resp = {'isBinding': True, 'status': isBinding['studentID']}
