@@ -46,9 +46,9 @@ def gpa(request: HttpRequest)-> HttpResponse:
             queryTest.dellAllSemester(studentID)
 
 
-
+            # TODO 考虑未满60
             data = list(
-                MongoConn().db.get_collection(mongoCollections[2]).find({'学号': studentID},
+                MongoConn().db.get_collection(mongoCollections[2]).find({'学号': studentID, '总成绩':{'$gte': '60'}},
                                                                         mongoFilter).sort("开学时间", 1)  # --升序
             )
 

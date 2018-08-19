@@ -72,8 +72,12 @@ def get(request: HttpRequest)-> HttpResponse:
         studentID = queryStudent['studentID']
         quertDate = MongoConn().db.get_collection(mongoCollections[4]).find_one({'studentID': studentID})
         password = queryStudent['password']
+
         # 第一次访问该学期
-        if quertDate[semester] == False:
+        print('字典：', quertDate.__class__)
+        if quertDate is None or \
+            semester not in dict(quertDate).keys():     # 条件是不存在任何数据，或则该学期数据
+
             spiderTest = auto_login(studentID, password, openID)
             spiderTest.getCookie()
             spiderTest.logon()

@@ -66,8 +66,8 @@ class classTable:
                 "location": classItem.location,
                 "extraMessage": classItem.extraMessage
             }
-            #print(data)
-            #print(classItem.startNum, classItem.endNum)
+            # print(data)
+            # print(classItem.startNum, classItem.endNum)
             subkey = ['studentID', 'day', 'name', 'teacher', 'isOdd', 'isEven','startNum']
             mongoCollection.update_one({key:data[key] for key in subkey}, {'$set':data}, upsert=True)
 
@@ -75,6 +75,7 @@ class classTable:
 # ——oneClass做单次课堂的类
 class _oneClass:
     def __init__(self, dataList:list, day):
+
         self.rawData = dataList
         self.name = self.rawData[0]           # 课程名
         self.sameClass = self.rawData[1].split(',')  # 同课班级

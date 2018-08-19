@@ -20,12 +20,15 @@ class MongoSaveLogin(MongoConn):
 
         self.db.get_collection(collection).update_one({k:v for k,v in persondata.items() if k in neededKey},  {'$set': persondata}, upsert=True)
 
+    # 更新验证码数据
     def updateOneVerify(self, VerifyCodeData:dict, collections = mongoCollections[1]):
 
         neededKey = ['ImgPath', 'ImgName', 'Decode', 'CteatedTime']
         self.db.get_collection(collections).update_one({k: v for k, v in VerifyCodeData.items() if k in neededKey},
                                                        {'$set': VerifyCodeData}, upsert=True)
 
+    #
     def updateOneItem(self, oneItem: gradeOneItem, collections = mongoCollections[2]):
         collection = self.db.get_collection(collections)
-        collection.update({'课程编号': oneItem.DateDict['课程编号']}, {'$set': oneItem.DateDict}, upsert=True)
+        print(oneItem.DateDict)
+        collection.update_one({'课程编号': oneItem.DateDict['课程编号']}, {'$set': oneItem.DateDict}, upsert=True)
