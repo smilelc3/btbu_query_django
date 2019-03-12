@@ -1,8 +1,8 @@
-from BTBU_query.内网查询.card_spider import spider as card_spider
+from BTBU_query.campus_network_query.card_spider import spider as card_spider
 from django.http import HttpResponse, HttpRequest
 
-from BTBU_query.数据库.const import *
-from BTBU_query.数据库.mongoConn import MongoConn
+from BTBU_query.database.const import *
+from BTBU_query.database.mongoConn import MongoConn
 
 from datetime import datetime
 import json

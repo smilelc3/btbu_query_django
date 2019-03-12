@@ -25,7 +25,7 @@ SECRET_KEY = '8ie4cf5f&sh-#1@nor^ie#%#ns1lx9f9trq0ljx+k+04ony^07'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*','192.168.2.192', 'www.btbuquery.top']
+ALLOWED_HOSTS = ['*', 'www.btbuquery.top']
 
 
 # Application definition

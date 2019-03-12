@@ -1,6 +1,6 @@
 import time
-from BTBU_query.数据库.const import *
-from BTBU_query.数据库.mongoConn import MongoConn
+from BTBU_query.database.const import *
+from BTBU_query.database.mongoConn import MongoConn
 
 # TODO(liuchang)： 完善自动扫描
 

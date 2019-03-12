@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
-from BTBU_query.数据库.const import *
-from BTBU_query.数据库.mongoConn import MongoConn
-from BTBU_query.内网查询.jwgl_spider import auto_login, auto_query_grade
+from BTBU_query.database.const import *
+from BTBU_query.database.mongoConn import MongoConn
+from BTBU_query.campus_network_query.jwgl_spider import auto_login, auto_query_grade
 import json
 
 mongoFilter = {

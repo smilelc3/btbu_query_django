@@ -1,8 +1,9 @@
+# coding: utf-8
 from django.shortcuts import render
-from BTBU_query.数据库.mongoConn import MongoConn
+from BTBU_query.database.mongoConn import MongoConn
 from django.http import HttpResponse, HttpRequest
-from BTBU_query.内网查询.jwgl_spider import auto_login
-from BTBU_query.数据库.const import *
+from BTBU_query.campus_network_query.jwgl_spider import auto_login
+from BTBU_query.database.const import *
 
 import json
 # Create your views here.
